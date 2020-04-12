@@ -1,7 +1,6 @@
 DRBD - World's Fastest SDS
 
 # install and config drbd resource on two nodes
-
 rpm --import http://elrepo.org/RPM-GPG-KEY-elrepo.org
 rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 

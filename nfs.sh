@@ -1,3 +1,4 @@
+# nfs-HA with drbd storage
 echo "choise 1 to install pcs on all nodes."
 echo "choise 2 to config pcs cluster only one node."
 echo "choise 3 to config nfs-HA only one node."
