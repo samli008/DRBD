@@ -25,7 +25,6 @@ pcs status cluster
 ;;
 
 3)
-
 read -p "pls input nfs vip [192.168.20.174]: " vip
 read -p "pls input drbd device [drbd0]: " drbd
 
