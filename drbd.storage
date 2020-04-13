@@ -32,6 +32,9 @@ EOF
 
 cat > /etc/drbd.d/drbd0.res << EOF
 resource drbd0 {
+net {
+allow-two-primaries;
+}
   disk /dev/vg1/lv1;
   device /dev/drbd0;
   meta-disk internal;
