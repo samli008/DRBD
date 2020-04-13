@@ -32,7 +32,7 @@ EOF
 
 cat > /etc/drbd.d/drbd0.res << EOF
 resource drbd0 {
-  disk /dev/vdb;
+  disk /dev/vg1/lv1;
   device /dev/drbd0;
   meta-disk internal;
   on c03 {
@@ -40,6 +40,20 @@ resource drbd0 {
   }
   on c04 {
     address 192.168.20.144:7789;
+  }
+}
+EOF
+
+cat > /etc/drbd.d/drbd1.res << EOF
+resource drbd1 {
+  disk /dev/vg1/lv2;
+  device /dev/drbd1;
+  meta-disk internal;
+  on c03 {
+    address 192.168.20.143:7788;
+  }
+  on c04 {
+    address 192.168.20.144:7788;
   }
 }
 EOF
