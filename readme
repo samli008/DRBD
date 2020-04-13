@@ -1,0 +1,1 @@
+drbd(block)-->pacemaker-->xfs,GFS2-->NFS,SAMBA
