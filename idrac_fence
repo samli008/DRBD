@@ -1,0 +1,11 @@
+# dell idrac stonith fence
+pcs stonith create aDrac fence_idrac pcmk_host_list="nss01" ipaddr="192.168.1.13" login="root" passwd="calvin" lanplus="true"
+pcs stonith create pDrac fence_idrac pcmk_host_list="nss02" ipaddr="192.168.1.14" login="root" passwd="calvin" lanplus="true"
+
+pcs stonith level add 1 nss01 aDrac
+pcs stonith level add 1 nss02 pDrac
+
+pcs property set stonith-enabled=true
+pcs property set no-quorum-policy=ignore
+pcs property set cluster-recheck-interval=30s
+pcs resource defaults resource-stickiness=100
