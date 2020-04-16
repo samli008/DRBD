@@ -14,3 +14,6 @@ mkfs.gfs2 -j 2 -p lock_dlm -t cluster1:gfs1 /dev/drbd0
 
 # create fs-clone
 pcs resource create fs ocf:heartbeat:Filesystem device="/dev/drbd0" directory="/data" fstype="gfs2" --clone
+
+# create HA-vm
+pcs resource create c7-1 VirtualDomain hypervisor="qemu:///system" config="/kvm/c7-1.xml" migration_transport=ssh --group group1
