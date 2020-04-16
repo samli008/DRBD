@@ -91,7 +91,7 @@ umount /mnt
 # split brain
 1. on secondary node
 drbdadm secondary drbd0
-drbdadm -- --discard-my-data connect data
+drbdadm -- --discard-my-data connect drbd0
 
 2. on primary node
 drbdadm connect drbd0
