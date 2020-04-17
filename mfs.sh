@@ -30,7 +30,7 @@ read -p "pls input drbd device [drbd0]: " drbd
 
 pcs property set stonith-enabled=false
 
-pcs resource create FsXFS Filesystem device="/dev/$drbd" directory="/var/lib/mfs" fstype="xfs" options="discard,rw,noatime,allocsize=1g,nobarrier,inode64,logbsize=262144,wsync" op monitor interval=40s on-fail=fence OCF_CHECK_LEVEL=20 --group mfsgroup
+pcs resource create FsXFS Filesystem device="/dev/$drbd" directory="/var/lib/mfs" fstype="xfs" --group mfsgroup
 
 pcs resource create vip IPaddr2 ip=$vip cidr_netmask=24 op monitor interval=20s OCF_CHECK_LEVEL=10 on-fail=fence --group mfsgroup
 
