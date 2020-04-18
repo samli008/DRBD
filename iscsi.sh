@@ -9,7 +9,7 @@ pcs cluster cib-push drbd_cfg
 # iscsi-target with pcs
 read -p "pls input iscsi vip [192.168.20.174]: " vip
 read -p "pls input iscsi device [drbd0]: " dev
-pcs resource create vip IPaddr2 ip=$vip cidr_netmask=24 op monitor interval=20s OCF_CHECK_LEVEL=10 on-fail=fence --group iscsigroup
+pcs resource create vip IPaddr2 ip=$vip cidr_netmask=24 op monitor interval=20s --group iscsigroup
 
 pcs resource create target1 iSCSITarget \
 portals=$vip iqn="iqn.2020-04.com.storage:ceph" implementation="lio-t" \
