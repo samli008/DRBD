@@ -1,0 +1,16 @@
+# config fence virtd on kvm host
+yum install -y ntp fence-virtd fence-virtd-multicast fence-virtd-libvirt fence-virt*
+mkdir -p /etc/cluster
+echo fecb9e62cbcf4e54dcfb > /etc/cluster/fence_xvm.key
+
+fence_virtd -c
+
+systemctl enable fence_virtd
+systemctl start fence_virtd
+systemctl status fence_virtd
+
+fence_xvm -o list
+fence_xvm -o off -H vm1 
+fence_xvm -o on -H vm1 
+fence_xvm -o reboot -H vm1 
+fence_xvm -o status -H vm1 
