@@ -1,5 +1,19 @@
 # dell idrac stonith fence
+stonith_admin --list-installed
+fence_ipmilan -a 192.168.6.33 -P -l root -p calvin -o reboot
+ipmitool -H 192.168.6.33 -I lanplus -U root -P calvin power cycle
+
+pcs property set stonith-enabled=true
+
+pcs stonith create idrac1 fence_ipmilan pcmk_host_list="pcs01" ipaddr="192.168.6.33" login="root" passwd="calvin" lanplus=1  power_wait=4 delay=20
+
+pcs stonith create idrac2 fence_ipmilan pcmk_host_list="pcs02" ipaddr="192.168.6.34" login="root" passwd="calvin" lanplus=1  power_wait=4 delay=20
+
+pcs stonith level add 1 pcs01 idrac1
+pcs stonith level add 1 pcs02 idrac2
+
 pcs stonith create aDrac fence_idrac pcmk_host_list="nss01" ipaddr="192.168.1.13" login="root" passwd="calvin" lanplus="true"
+
 pcs stonith create pDrac fence_idrac pcmk_host_list="nss02" ipaddr="192.168.1.14" login="root" passwd="calvin" lanplus="true"
 
 pcs stonith level add 1 nss01 aDrac
